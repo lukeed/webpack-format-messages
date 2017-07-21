@@ -28,9 +28,10 @@ $ npm install webpack-format-messages --save-dev
 ## Usage
 
 ```js
+const webpack = require('webpack');
 const formatMessages = require('webpack-format-messages');
 
-const compiler = webpack(config);
+const compiler = webpack(/* config */);
 
 compiler.plugin('invalid', () => console.log('Compiling...'));
 
