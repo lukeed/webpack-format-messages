@@ -4,7 +4,7 @@
 
 The console output from CRA is very well-done! Unfortunately, the only way to use it is to install _all_ of `react-dev-utils`, which is quite a module-rich tree. While there is **nothing** wrong with this, many times I'd prefer a quick install for my custom Webpack configs (which aren't always React-related).
 
-If you are already using `react-dev-utils`, you do not need this module and should do this istead:
+If you are already using `react-dev-utils`, you do not need this module and should do this instead:
 
 ```js
 const formatMessages = require('react-dev-utils/formatWebpackMessages');
