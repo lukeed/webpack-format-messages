@@ -1,6 +1,6 @@
 {
   "name": "webpack-format-messages",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Beautiful formatting for Webpack messages; ported from Create React App!",
   "repository": "lukeed/webpack-format-messages",
   "license": "MIT",
