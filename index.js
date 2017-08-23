@@ -80,4 +80,6 @@ module.exports = function (stats) {
   }
 
   return result;
-}
+};
+
+module.exports.formatMessage = formatMessage;
