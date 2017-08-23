@@ -69,6 +69,11 @@ Type: `Object`
 A Webpack [`stats`](https://github.com/webpack/docs/wiki/node.js-api#stats) object.
 
 
+## Related
+
+* [`webpack-messages`](https://github.com/lukeed/webpack-messages) -- Wraps this module as a Webpack plugin, with lifecycle hooks
+
+
 ## Credits
 
 This module is pulled directly from [`react-dev-utils`](https://github.com/facebookincubator/create-react-app/tree/master/packages/react-dev-utils), provided by Facebook Incubator.
