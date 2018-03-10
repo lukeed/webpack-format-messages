@@ -26,6 +26,6 @@
     "output"
   ],
   "dependencies": {
-    "chalk": "^2.0.1"
+    "clorox": "^1.0.3"
   }
 }
