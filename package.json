@@ -26,6 +26,6 @@
     "output"
   ],
   "dependencies": {
-    "clorox": "^1.0.3"
+    "ansi-colors": "^2.0.1"
   }
 }

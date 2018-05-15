@@ -5,7 +5,7 @@
 
 'use strict';
 
-const clorox = require('clorox');
+const colors = require('ansi-colors');
 
 const errorLabel = 'Syntax error:';
 const isLikelyASyntaxError = str => str.includes(errorLabel);
@@ -55,7 +55,7 @@ function formatMessage(message, isError) {
     lines[1] = lines[1].replace(exportRegex, "$1 '$4' does not contain an export named '$3'.");
   }
 
-  lines[0] = clorox.inverse(lines[0]);
+  lines[0] = colors.inverse(lines[0]);
 
   // Reassemble & Strip internal tracing, except `webpack:` -- (create-react-app/pull/1050)
   return lines.join('\n').replace(stackRegex, '').trim();
