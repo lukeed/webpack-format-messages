@@ -3,7 +3,7 @@
  * see: https://github.com/facebookincubator/create-react-app/tree/master/packages/react-dev-utils
  */
 
-const { inverse } = require('ansi-colors');
+const { inverse } = require('kleur');
 
 const errorLabel = 'Syntax error:';
 const isLikelyASyntaxError = str => str.includes(errorLabel);

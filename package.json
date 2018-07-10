@@ -26,6 +26,6 @@
     "output"
   ],
   "dependencies": {
-    "ansi-colors": "^2.0.1"
+    "kleur": "^1.0.0"
   }
 }
