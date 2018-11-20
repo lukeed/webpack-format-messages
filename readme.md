@@ -33,9 +33,11 @@ const formatMessages = require('webpack-format-messages');
 
 const compiler = webpack(/* config */);
 
-compiler.plugin('invalid', () => console.log('Compiling...'));
+compiler.hooks.invalid.tap('invalid', function() {
+  console.log('Compiling...');
+});
 
-compiler.plugin('done', stats => {
+compiler.hooks.done.tap('done', (stats) => {
   const messages = formatMessages(stats);
 
   if (!messages.errors.length && !messages.warnings.length) {
@@ -51,7 +53,7 @@ compiler.plugin('done', stats => {
   if (messages.warnings.length) {
     console.log('Compiled with warnings.');
     messages.warnings.forEach(w => console.log(w));
-  }
+  }  
 });
 ```
 
