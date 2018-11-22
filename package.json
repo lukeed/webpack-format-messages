@@ -26,6 +26,6 @@
     "output"
   ],
   "dependencies": {
-    "kleur": "^2.0.1"
+    "kleur": "^3.0.0"
   }
 }
