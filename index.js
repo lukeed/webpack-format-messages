@@ -12,6 +12,12 @@ const exportRegex = /\s*(.+?)\s*(")?export '(.+?)' was not found in '(.+?)'/;
 const stackRegex = /^\s*at\s((?!webpack:).)*:\d+:\d+[\s\)]*(\n|$)/gm;
 
 function formatMessage(message, isError) {
+	// Webpack v5 gives us an object, not a string, but message.details is
+	// what we are interested in here.
+	if (typeof message === "object" && typeof message.details === "string") {
+		message = message.details;
+	}
+
   let lines = message.split('\n');
 
   if (lines.length > 2 && lines[1] === '') {
