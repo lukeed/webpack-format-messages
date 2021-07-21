@@ -3,6 +3,8 @@
   "name": "webpack-format-messages",
   "repository": "lukeed/webpack-format-messages",
   "description": "Beautiful formatting for Webpack messages; ported from Create React App!",
+  "module": "index.mjs",
+  "main": "index.js",
   "license": "MIT",
   "author": {
     "name": "Luke Edwards",
@@ -13,10 +15,17 @@
     "node": ">=6"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "index.mjs"
   ],
+  "scripts": {
+    "build": "bundt"
+  },
   "dependencies": {
     "kleur": "^4.0.0"
+  },
+  "devDependencies": {
+    "bundt": "1.1.5"
   },
   "keywords": [
     "create-react-app",

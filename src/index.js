@@ -3,7 +3,7 @@
  * see: https://github.com/facebookincubator/create-react-app/tree/master/packages/react-dev-utils
  */
 
-const { inverse } = require('kleur/colors');
+import { inverse } from 'kleur/colors';
 
 const errorLabel = 'Syntax error:';
 const isLikelyASyntaxError = str => str.includes(errorLabel);
@@ -11,7 +11,7 @@ const isLikelyASyntaxError = str => str.includes(errorLabel);
 const exportRegex = /\s*(.+?)\s*(")?export '(.+?)' was not found in '(.+?)'/;
 const stackRegex = /^\s*at\s((?!webpack:).)*:\d+:\d+[\s\)]*(\n|$)/gm;
 
-function formatMessage(message, isError) {
+function format(message, isError) {
 	// Workaround to accommodate Webpack v5
 	// It gives us an Object now, not a string...
 	// Objects not identical; details > stack > message
@@ -66,12 +66,12 @@ function formatMessage(message, isError) {
 	return lines.join('\n').replace(stackRegex, '').trim();
 }
 
-module.exports = function (stats) {
+export function formatMessage(stats) {
 	const json = stats.toJson({}, true);
 
 	const result = {
-		errors: json.errors.map(msg => formatMessage(msg, true)),
-		warnings: json.warnings.map(msg => formatMessage(msg, false))
+		errors: json.errors.map(msg => format(msg, true)),
+		warnings: json.warnings.map(msg => format(msg, false))
 	};
 
 	// Only show syntax errors if we have them
@@ -87,4 +87,4 @@ module.exports = function (stats) {
 	return result;
 };
 
-module.exports.formatMessage = formatMessage;
+export default formatMessage;
