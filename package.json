@@ -5,6 +5,7 @@
   "description": "Beautiful formatting for Webpack messages; ported from Create React App!",
   "module": "index.mjs",
   "main": "index.js",
+  "types": "index.d.ts",
   "license": "MIT",
   "author": {
     "name": "Luke Edwards",
@@ -23,7 +24,8 @@
   },
   "files": [
     "index.js",
-    "index.mjs"
+    "index.mjs",
+    "index.d.ts"
   ],
   "scripts": {
     "build": "bundt"
