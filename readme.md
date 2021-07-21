@@ -30,6 +30,8 @@ $ npm install webpack-format-messages --save-dev
 ```js
 const webpack = require('webpack');
 const formatMessages = require('webpack-format-messages');
+// or
+const { formatMessages } = require('webpack-format-messages');
 
 const compiler = webpack(/* config */);
 
@@ -53,23 +55,33 @@ compiler.hooks.done.tap('done', (stats) => {
   if (messages.warnings.length) {
     console.log('Compiled with warnings.');
     messages.warnings.forEach(w => console.log(w));
-  }  
+  }
 });
 ```
 
 
 ## API
 
-### formatMessages(input)
+### formatMessages(stats)
+Returns: `{ errors: string[], warnings: string[] }`
 
 Extracts & prettifies warning and error messages from Webpack.
 
-#### input
+> **Note:** This is also the `default` export.
+
+#### stats
 
 Type: `Object`
 
 A Webpack [`stats`](https://github.com/webpack/docs/wiki/node.js-api#stats) object.
 
+
+### formatMessage(message)
+Returns: `string`
+
+Transforms an individual webpack `stats` message object into a string.
+
+> **Note:** You probably don't want to use this directly! It's used by `formatMessages` for you.
 
 ## Related
 
