@@ -11,7 +11,7 @@ const isLikelySyntaxError = str => str.includes(errorLabel);
 const exportRegex = /\s*(.+?)\s*(")?export '(.+?)' was not found in '(.+?)'/;
 const stackRegex = /^\s*at\s((?!webpack:).)*:\d+:\d+[\s\)]*(\n|$)/gm;
 
-function format(message) {
+export function formatMessage(message) {
 	// Workaround to accommodate Webpack v5
 	// It gives us an Object now, not a string...
 	// Objects not identical; details > stack > message
@@ -66,12 +66,12 @@ function format(message) {
 	return lines.join('\n').replace(stackRegex, '').trim();
 }
 
-export function formatMessage(stats) {
+export function formatMessages(stats) {
 	const { errors, warnings } = stats.toJson({}, true);
 
 	const result = {
-		errors: errors.map(format),
-		warnings: warnings.map(format)
+		errors: errors.map(formatMessage),
+		warnings: warnings.map(formatMessage),
 	};
 
 	// Only show syntax errors if we have them
@@ -87,4 +87,4 @@ export function formatMessage(stats) {
 	return result;
 }
 
-export default formatMessage;
+export default formatMessages;
