@@ -6,12 +6,12 @@
 import { inverse } from 'kleur/colors';
 
 const errorLabel = 'Syntax error:';
-const isLikelyASyntaxError = str => str.includes(errorLabel);
+const isLikelySyntaxError = str => str.includes(errorLabel);
 
 const exportRegex = /\s*(.+?)\s*(")?export '(.+?)' was not found in '(.+?)'/;
 const stackRegex = /^\s*at\s((?!webpack:).)*:\d+:\d+[\s\)]*(\n|$)/gm;
 
-function format(message, isError) {
+function format(message) {
 	// Workaround to accommodate Webpack v5
 	// It gives us an Object now, not a string...
 	// Objects not identical; details > stack > message
@@ -67,16 +67,16 @@ function format(message, isError) {
 }
 
 export function formatMessage(stats) {
-	const json = stats.toJson({}, true);
+	const { errors, warnings } = stats.toJson({}, true);
 
 	const result = {
-		errors: json.errors.map(msg => format(msg, true)),
-		warnings: json.warnings.map(msg => format(msg, false))
+		errors: errors.map(format),
+		warnings: warnings.map(format)
 	};
 
 	// Only show syntax errors if we have them
-	if (result.errors.some(isLikelyASyntaxError)) {
-		result.errors = result.errors.filter(isLikelyASyntaxError);
+	if (result.errors.some(isLikelySyntaxError)) {
+		result.errors = result.errors.filter(isLikelySyntaxError);
 	}
 
 	// First error is usually it; others usually the same
@@ -85,6 +85,6 @@ export function formatMessage(stats) {
 	}
 
 	return result;
-};
+}
 
 export default formatMessage;
