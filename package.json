@@ -15,6 +15,9 @@
   "files": [
     "index.js"
   ],
+  "dependencies": {
+    "kleur": "^4.0.0"
+  },
   "keywords": [
     "create-react-app",
     "console",
@@ -24,8 +27,5 @@
     "format",
     "stats",
     "output"
-  ],
-  "dependencies": {
-    "kleur": "^3.0.0"
-  }
+  ]
 }
