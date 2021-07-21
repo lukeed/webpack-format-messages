@@ -3,15 +3,15 @@
  * see: https://github.com/facebookincubator/create-react-app/tree/master/packages/react-dev-utils
  */
 
-const colors = require('kleur');
+import colors from 'kleur';
 
 const errorLabel = 'Syntax error:';
-const isLikelyASyntaxError = str => str.includes(errorLabel);
+const isLikelyASyntaxError = (str: string) => str.includes(errorLabel);
 
 const exportRegex = /\s*(.+?)\s*(")?export '(.+?)' was not found in '(.+?)'/;
 const stackRegex = /^\s*at\s((?!webpack:).)*:\d+:\d+[\s\)]*(\n|$)/gm;
 
-function formatMessage(message, isError) {
+export function formatMessage(message: any) {
 	// Workaround to accommodate Webpack v5
 	// It gives us an Object now, not a string...
 	// Objects not identical; details > stack > message
@@ -32,7 +32,7 @@ function formatMessage(message, isError) {
 	}
 
 	// Remove useless `entry` filename stack details
-	lines = lines.filter(line => line.indexOf(' @ ') !== 0);
+	lines = lines.filter((line: string) => line.indexOf(' @ ') !== 0);
 
 	// 0 ~> filename; 1 ~> main err msg
 	if (!lines[0] || !lines[1]) {
@@ -66,12 +66,12 @@ function formatMessage(message, isError) {
 	return lines.join('\n').replace(stackRegex, '').trim();
 }
 
-module.exports = function (stats) {
+export default function (stats: any) {
 	const json = stats.toJson({}, true);
 
 	const result = {
-		errors: json.errors.map(msg => formatMessage(msg, true)),
-		warnings: json.warnings.map(msg => formatMessage(msg, false))
+		errors: json.errors.map((msg: any) => formatMessage(msg)),
+		warnings: json.warnings.map((msg: any) => formatMessage(msg))
 	};
 
 	// Only show syntax errors if we have them
@@ -86,5 +86,3 @@ module.exports = function (stats) {
 
 	return result;
 };
-
-module.exports.formatMessage = formatMessage;
