@@ -1,13 +1,13 @@
 {
-  "name": "webpack-format-messages",
   "version": "2.0.6",
-  "description": "Beautiful formatting for Webpack messages; ported from Create React App!",
+  "name": "webpack-format-messages",
   "repository": "lukeed/webpack-format-messages",
+  "description": "Beautiful formatting for Webpack messages; ported from Create React App!",
   "license": "MIT",
   "author": {
     "name": "Luke Edwards",
     "email": "luke.edwards05@gmail.com",
-    "url": "lukeed.com"
+    "url": "https://lukeed.com"
   },
   "engines": {
     "node": ">=6"
