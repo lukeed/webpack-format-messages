@@ -1,5 +1,5 @@
 {
-  "version": "3.0.0",
+  "version": "3.0.1",
   "name": "webpack-format-messages",
   "repository": "lukeed/webpack-format-messages",
   "description": "Beautiful formatting for Webpack messages; ported from Create React App!",
