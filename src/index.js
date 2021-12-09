@@ -67,7 +67,11 @@ export function formatMessage(message) {
 }
 
 export function formatMessages(stats) {
-	const { errors, warnings } = stats.toJson({}, true);
+	const { errors, warnings } = stats.toJson({
+		all: false,
+		errors: true,
+		warnings: true
+	});
 
 	const result = {
 		errors: errors.map(formatMessage),
